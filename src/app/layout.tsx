@@ -6,6 +6,7 @@ import { cn, constructMetadata } from "@/lib/utils";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import type { Metadata, Viewport } from "next";
+import { PrivyClientProvider } from "@/components/providers/PrivyClientProvider";
 import "./globals.css";
 
 export const metadata: Metadata = constructMetadata({
@@ -41,9 +42,11 @@ export default function RootLayout({
           defaultTheme="dark"
           enableSystem={false}
         >
-          {children}
-          <ThemeToggle />
-          <TailwindIndicator />
+          <PrivyClientProvider>
+            {children}
+            <ThemeToggle />
+            <TailwindIndicator />
+          </PrivyClientProvider>
         </ThemeProvider>
       </body>
     </html>
