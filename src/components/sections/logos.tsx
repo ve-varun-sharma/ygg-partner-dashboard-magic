@@ -16,6 +16,8 @@ const companies = [
 
 const companies2 = ["Spotify", "Dropbox", "Tinder", "Slack", "Zoom", "Shopify"];
 
+const partners = [];
+
 export function Logos() {
   const [currentSet, setCurrentSet] = useState(companies);
 

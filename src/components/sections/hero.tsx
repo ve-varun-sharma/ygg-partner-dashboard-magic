@@ -146,7 +146,9 @@ export function Hero() {
       return () => clearTimeout(timer);
     }
   }, [isMobile]);
-
+  // 6: 'https://prod.spline.design/wc1myM59ezqtu4Hy/scene.splinecode',
+  // 7: 'https://prod.spline.design/st5IUIDjIq35F7Tb/scene.splinecode',
+  // 8: 'https://prod.spline.design/Fn98PdR1fbX0kRUr/scene.splinecode',
   return (
     <Section id="hero">
       <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-x-8 w-full p-6 lg:p-12 border-x overflow-hidden">
@@ -165,7 +167,7 @@ export function Hero() {
                   transition={{ duration: 0.8, delay: 1 }}
                 >
                   <LazySpline
-                    scene="https://prod.spline.design/mZBrYNcnoESGlTUG/scene.splinecode"
+                    scene="https://prod.spline.design/Fn98PdR1fbX0kRUr/scene.splinecode"
                     className="absolute inset-0 w-full h-full origin-top-left flex items-center justify-center"
                   />
                 </motion.div>

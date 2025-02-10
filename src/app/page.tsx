@@ -21,8 +21,8 @@ export default function Home() {
       <UseCases />
       {/* <Features /> */}
       <Statistics />
-      <Testimonials />
-      <Community />
+      {/* <Testimonials />
+      <Community /> */}
       {/* <Blog /> */}
       <CTA />
       <Footer />
