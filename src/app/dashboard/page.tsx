@@ -12,6 +12,7 @@ import {
   CardTitle,
   CardDescription,
 } from "@/components/ui/card";
+import { RetroGrid } from "@/components/ui/retro-grid";
 
 async function verifyToken() {
   const url = "/api/verify";
@@ -66,12 +67,15 @@ export default function DashboardPage() {
 
   return (
     <>
+      <span className="pointer-events-none z-10 whitespace-pre-wrap bg-gradient-to-b from-[#ffd319] via-[#ff2975] to-[#8c1eff] bg-clip-text text-center text-7xl font-bold leading-none tracking-tighter text-transparent">
+        Yield Guild Games
+      </span>
       <Head>
         <title>YGG Partner Dashboard</title>
       </Head>
 
-      <main className="flex flex-col min-h-screen px-4 sm:px-20 py-6 sm:py-10 bg-privy-light-blue">
-        <div className="container mx-auto py-10">
+      <main className="flex flex-col min-h-screen relative">
+        <div className="container mx-auto py-10 relative z-10">
           <h1 className="text-3xl font-bold tracking-tight mb-4">
             Partner Dashboard Overview
           </h1>
@@ -120,6 +124,9 @@ export default function DashboardPage() {
           <div className="mt-10">
             <ProgramsMagicCards />
           </div>
+        </div>
+        <div className="absolute inset-0 z-0">
+          <RetroGrid />
         </div>
       </main>
     </>
