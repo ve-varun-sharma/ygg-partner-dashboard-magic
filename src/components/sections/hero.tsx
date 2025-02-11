@@ -25,7 +25,7 @@ function HeroPill() {
         🛠️ New
       </div>
       <p className="text-xs font-medium text-primary sm:text-sm">
-        Introducing AI Agent SDK
+        Yield Guild games Partner Program
       </p>
       <svg
         width="12"
@@ -98,7 +98,7 @@ function HeroCTA() {
         transition={{ delay: 0.8, duration: 0.8, ease }}
       >
         <Link
-          href="/download"
+          href="/login"
           className={cn(
             buttonVariants({ variant: "default" }),
             "w-full sm:w-auto text-background flex gap-2 rounded-lg"
