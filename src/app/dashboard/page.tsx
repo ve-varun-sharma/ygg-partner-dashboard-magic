@@ -13,7 +13,7 @@ import {
   CardDescription,
 } from "@/components/ui/card";
 import { RetroGrid } from "@/components/ui/retro-grid";
-
+import { NumberTicker } from "@/components/ui/number-ticker";
 async function verifyToken() {
   const url = "/api/verify";
   const accessToken = await getAccessToken();
@@ -89,7 +89,12 @@ export default function DashboardPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">125</div>{" "}
+                {/* <div className="text-2xl font-bold">125</div>{" "} */}
+                <NumberTicker
+                  value={1859}
+                  className="whitespace-pre-wrap text-8xl font-medium tracking-tighter text-black dark:text-white"
+                />
+
                 {/* Replace with actual data */}
               </CardContent>
             </Card>
@@ -102,7 +107,11 @@ export default function DashboardPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">50</div>{" "}
+                {/* <div className="text-2xl font-bold">50</div>{" "} */}
+                <NumberTicker
+                  value={80}
+                  className="whitespace-pre-wrap text-8xl font-medium tracking-tighter text-black dark:text-white"
+                />
                 {/* Replace with actual data */}
               </CardContent>
             </Card>
@@ -115,7 +124,12 @@ export default function DashboardPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">30</div>{" "}
+                {/* <div className="text-2xl font-bold">30</div>{" "} */}
+                <NumberTicker
+                  value={878}
+                  className="whitespace-pre-wrap text-8xl font-medium tracking-tighter text-black dark:text-white"
+                />
+
                 {/* Replace with actual data */}
               </CardContent>
             </Card>
