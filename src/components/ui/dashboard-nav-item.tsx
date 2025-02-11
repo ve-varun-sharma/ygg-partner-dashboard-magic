@@ -2,18 +2,18 @@ import React from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-interface NavItemProps extends React.HTMLAttributes<HTMLDivElement> {
+interface NavItemProps {
   href: string;
   icon: React.ReactElement;
   children: React.ReactNode;
+  className?: string;
 }
 
 export const NavItem: React.FC<NavItemProps> = ({
-  className = "",
   href,
   icon,
   children,
-  ...props
+  className,
 }) => {
   return (
     <li className="list-none">
@@ -25,7 +25,6 @@ export const NavItem: React.FC<NavItemProps> = ({
           "transition-colors focus:outline-none focus:bg-primary/10",
           className
         )}
-        {...props}
       >
         <span className="mr-3 h-5 w-5 flex-shrink-0 flex items-center justify-center text-muted-foreground group-hover:text-primary transition-colors">
           {React.cloneElement(icon, { className: "h-4 w-4" })}
