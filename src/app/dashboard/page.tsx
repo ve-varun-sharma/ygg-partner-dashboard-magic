@@ -1,12 +1,51 @@
 "use client";
-import { usePrivy } from "@privy-io/react-auth";
-import Head from "next/head";
+
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { getAccessToken, usePrivy } from "@privy-io/react-auth";
+import Head from "next/head";
+import { ProgramsMagicCards } from "@/components/Cards/MagicCards/ProgramsMagicCards";
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
+
+async function verifyToken() {
+  const url = "/api/verify";
+  const accessToken = await getAccessToken();
+  const result = await fetch(url, {
+    headers: {
+      ...(accessToken ? { Authorization: `Bearer ${accessToken}` } : undefined),
+    },
+  });
+
+  return await result.json();
+}
 
 export default function DashboardPage() {
+  const [verifyResult, setVerifyResult] = useState();
   const router = useRouter();
-  const { ready, authenticated, user, logout } = usePrivy();
+  const {
+    ready,
+    authenticated,
+    user,
+    logout,
+    linkEmail,
+    linkWallet,
+    unlinkEmail,
+    linkPhone,
+    unlinkPhone,
+    unlinkWallet,
+    linkGoogle,
+    unlinkGoogle,
+    linkTwitter,
+    unlinkTwitter,
+    linkDiscord,
+    unlinkDiscord,
+  } = usePrivy();
 
   useEffect(() => {
     if (ready && !authenticated) {
@@ -14,14 +53,75 @@ export default function DashboardPage() {
     }
   }, [ready, authenticated, router]);
 
+  const numAccounts = user?.linkedAccounts?.length || 0;
+  const canRemoveAccount = numAccounts > 1;
+
+  const email = user?.email;
+  const phone = user?.phone;
+  const wallet = user?.wallet;
+
+  const googleSubject = user?.google?.subject || null;
+  const twitterSubject = user?.twitter?.subject || null;
+  const discordSubject = user?.discord?.subject || null;
+
   return (
     <>
       <Head>
-        <title>Privy Smart Wallets Demo</title>
+        <title>YGG Partner Dashboard</title>
       </Head>
-      <h1>HELLO</h1>
 
-      <main className="flex flex-col min-h-screen px-4 sm:px-20 py-6 sm:py-10 bg-privy-light-blue"></main>
+      <main className="flex flex-col min-h-screen px-4 sm:px-20 py-6 sm:py-10 bg-privy-light-blue">
+        <div className="container mx-auto py-10">
+          <h1 className="text-3xl font-bold tracking-tight mb-4">
+            Partner Dashboard Overview
+          </h1>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Total Quests Created</CardTitle>
+                <CardDescription>
+                  Number of quests created in the system
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold">125</div>{" "}
+                {/* Replace with actual data */}
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Active Partners</CardTitle>
+                <CardDescription>
+                  Number of partners currently active
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold">50</div>{" "}
+                {/* Replace with actual data */}
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Quests in Progress</CardTitle>
+                <CardDescription>
+                  Quests currently being worked on
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold">30</div>{" "}
+                {/* Replace with actual data */}
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="mt-10">
+            <ProgramsMagicCards />
+          </div>
+        </div>
+      </main>
     </>
   );
 }

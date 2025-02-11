@@ -8,6 +8,10 @@ import { GeistSans } from "geist/font/sans";
 import type { Metadata, Viewport } from "next";
 import { PrivyClientProvider } from "@/components/providers/PrivyClientProvider";
 import "./globals.css";
+import { Inter } from "next/font/google";
+import { Sidebar } from "@/components/ui/dashboard-sidebar";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = constructMetadata({
   title: `${siteConfig.name} | ${siteConfig.description}`,
@@ -30,21 +34,16 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${GeistSans.variable} ${GeistMono.variable}`}
+      className={`${GeistSans.variable} ${GeistMono.variable} ${inter.className}`}
     >
       <body
         className={cn(
           "min-h-screen bg-background antialiased w-full mx-auto scroll-smooth font-sans"
         )}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem={false}
-        >
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <PrivyClientProvider>
             {children}
-            <ThemeToggle />
             <TailwindIndicator />
           </PrivyClientProvider>
         </ThemeProvider>

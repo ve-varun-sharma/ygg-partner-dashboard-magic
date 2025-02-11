@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
+  return twMerge(clsx(inputs.filter((val) => val != null).map(String)));
 }
 
 export function absoluteUrl(path: string) {
